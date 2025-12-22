@@ -2,44 +2,43 @@ package com.ngabonzizacedrick.user_tracker_service.config;
 
 import com.ngabonzizacedrick.user_tracker_service.model.User;
 import com.ngabonzizacedrick.user_tracker_service.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
-@Configuration
-public class DatabaseInitializer {
+@Component
+@RequiredArgsConstructor
+public class DatabaseInitializer implements CommandLineRunner {
 
-    @Bean
-    CommandLineRunner initDatabase(UserRepository repository) {
-        return args -> {
-            // Check if users already exist
-            if (repository.count() == 0) {
-                // Create test users
-                User user1 = new User();
-                user1.setEmail("client@example.com");
-                user1.setLastSeen(0L);
-                user1.setIp("0.0.0.0");
-                user1.setPort(0);
-                repository.save(user1);
+    private final UserRepository userRepository;
 
-                User user2 = new User();
-                user2.setEmail("admin@example.com");
-                user2.setLastSeen(0L);
-                user2.setIp("0.0.0.0");
-                user2.setPort(0);
-                repository.save(user2);
+    @Override
+    public void run(String... args) throws Exception {
+        userRepository.deleteAll();
+        System.out.println("Cleared existing users");
 
-                User user3 = new User();
-                user3.setEmail("test@example.com");
-                user3.setLastSeen(0L);
-                user3.setIp("0.0.0.0");
-                user3.setPort(0);
-                repository.save(user3);
+        User user1 = new User();
+        user1.setEmail("cedrickngabo03@gmail.com");
+        user1.setLastSeen(0L);
+        user1.setIp("0.0.0.0");
+        user1.setPort(0);
 
-                System.out.println("✅ Sample users created: client@example.com, admin@example.com, test@example.com");
-            } else {
-                System.out.println("✅ Users already exist in database");
-            }
-        };
+        User user2 = new User();
+        user2.setEmail("ngabocedkennedy03@gmail.com");
+        user2.setLastSeen(0L);
+        user2.setIp("0.0.0.0");
+        user2.setPort(0);
+
+        User user3 = new User();
+        user3.setEmail("novemba42@gmail.com");
+        user3.setLastSeen(0L);
+        user3.setIp("0.0.0.0");
+        user3.setPort(0);
+
+        userRepository.save(user1);
+        userRepository.save(user2);
+        userRepository.save(user3);
+
+        System.out.println("Initialized database with 3 users");
     }
 }
