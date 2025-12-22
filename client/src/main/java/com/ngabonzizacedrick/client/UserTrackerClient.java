@@ -17,9 +17,9 @@ public class UserTrackerClient {
 
     private static final String SERVER_URL = "https://localhost:8443/track";
     private static final String CLIENT_KEYSTORE_PATH = "certs/client1-keystore.p12";
-    private static final String CLIENT_KEYSTORE_PASSWORD = "changeit";
+    private static final String CLIENT_KEYSTORE_PASSWORD = "cedric";
     private static final String TRUSTSTORE_PATH = "certs/truststore.jks";
-    private static final String TRUSTSTORE_PASSWORD = "changeit";
+    private static final String TRUSTSTORE_PASSWORD = "cedric";
 
     public static void main(String[] args) {
         try {
