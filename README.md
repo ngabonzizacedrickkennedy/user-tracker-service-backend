@@ -118,17 +118,11 @@ Binary format: Email (UTF-8) | LastSeen (8 bytes, nanoseconds) | IP (UTF-8) | Po
 - Go listener (bonus points for non-mainstream language)
 - Server runs natively on Windows (Docker UDP issue)
 
-## Limitations
+Notes
+Platform: Windows + Git Bash. Server runs natively due to Docker UDP broadcast limitation on Windows.
+Technology: Java 21, Maven 3.9.9, Go 1.25.5, MySQL 8.0. Used Go for listener to get bonus points for non-mainstream language.
+Security: Self-signed certificates as required by specifications. UDP broadcasts are unencrypted by protocol design.
+Development: Hardcoded credentials for local testing. Production would use environment variables.
 
-- UDP from Docker doesn't reach Windows host
-- Broadcasts only on local network
-- No UDP authentication/encryption
-- No delivery confirmation (UDP fire-and-forget)
-- Self-signed certs (for testing)
-- Passwords in config files
-
-## Notes
-
-Windows + Git Bash. Java 21, Maven 3.9.9, Go 1.25.5, MySQL 8.0. Go listener for bonus points.
 
 NGABONZIZA Cedrick Kennedy
