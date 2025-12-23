@@ -24,7 +24,7 @@ func main() {
 	fmt.Printf("Listening for UDP broadcasts on port %d...\n", *port)
 
 	buffer := make([]byte, 1024)
-	
+
 	for {
 		n, remoteAddr, err := conn.ReadFrom(buffer)
 		if err != nil {
@@ -64,13 +64,11 @@ func parseAndPrint(data []byte, remoteAddr net.Addr) error {
 
 	timestamp := time.Unix(lastSeenNanos/1_000_000_000, lastSeenNanos%1_000_000_000)
 
-	fmt.Println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
 	fmt.Printf("Email:       %s\n", email)
 	fmt.Printf("Last Seen:   %s\n", timestamp.Format("2006-01-02 15:04:05.000000000 MST"))
 	fmt.Printf("IP:          %s\n", ip)
 	fmt.Printf("Port:        %d\n", port)
 	fmt.Printf("Source:      %s\n", remoteAddr.String())
-	fmt.Println("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
 
 	return nil
 }
@@ -84,17 +82,17 @@ func readUTF(r *byteReader) (string, error) {
 	if r.pos+2 > len(r.data) {
 		return "", io.ErrUnexpectedEOF
 	}
-	
+
 	length := binary.BigEndian.Uint16(r.data[r.pos : r.pos+2])
 	r.pos += 2
-	
+
 	if r.pos+int(length) > len(r.data) {
 		return "", io.ErrUnexpectedEOF
 	}
-	
+
 	str := string(r.data[r.pos : r.pos+int(length)])
 	r.pos += int(length)
-	
+
 	return str, nil
 }
 
@@ -102,10 +100,10 @@ func readInt64(r *byteReader) (int64, error) {
 	if r.pos+8 > len(r.data) {
 		return 0, io.ErrUnexpectedEOF
 	}
-	
+
 	val := int64(binary.BigEndian.Uint64(r.data[r.pos : r.pos+8]))
 	r.pos += 8
-	
+
 	return val, nil
 }
 
@@ -113,9 +111,9 @@ func readInt32(r *byteReader) (int32, error) {
 	if r.pos+4 > len(r.data) {
 		return 0, io.ErrUnexpectedEOF
 	}
-	
+
 	val := int32(binary.BigEndian.Uint32(r.data[r.pos : r.pos+4]))
 	r.pos += 4
-	
+
 	return val, nil
 }
