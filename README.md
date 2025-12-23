@@ -59,7 +59,6 @@ cd listener && go build -o listener.exe && cd ..
 
 **Server:** `mvn spring-boot:run` (logs show: Spring Boot, Tomcat 8443, UDP 6666, DB initialized)
 
-[INSERT SCREENSHOT: Server running]
 
 **Listener:** `cd listener && ./listener` (shows "Listening on port 6667...")
 
