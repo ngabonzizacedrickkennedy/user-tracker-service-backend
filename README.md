@@ -131,6 +131,4 @@ Binary format: Email (UTF-8) | LastSeen (8 bytes, nanoseconds) | IP (UTF-8) | Po
 
 Windows + Git Bash. Java 21, Maven 3.9.9, Go 1.25.5, MySQL 8.0. Go listener for bonus points.
 
-Built by Cedrick Ngabonziza  
-cedrickngabo03@gmail.com  
-December 2025
+NGABONZIZA Cedrick Kennedy
